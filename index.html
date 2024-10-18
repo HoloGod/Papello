@@ -89,9 +89,49 @@
             transition: background-color .3s;
         }
         .btn:hover { background: #e6b000; }
+        
+        /* Mobile optimizations */
         @media (max-width: 768px) {
-            nav ul { flex-direction: column; align-items: center; }
-            nav li { margin: 5px 0; }
+            nav {
+                position: relative;
+            }
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                display: none;
+            }
+            nav.active ul {
+                display: flex;
+            }
+            nav li {
+                margin: 10px 0;
+                width: 100%;
+                text-align: center;
+            }
+            nav a {
+                padding: 0.5rem 0;
+                display: block;
+            }
+            .menu-toggle {
+                display: block;
+                background: none;
+                border: none;
+                font-size: 1.5rem;
+                color: var(--primary);
+                cursor: pointer;
+                padding: 1rem;
+                width: 100%;
+                text-align: right;
+            }
+            .menu-item {
+                padding: 1rem;
+            }
+            .menu-item:hover {
+                transform: none;
+            }
+            .container {
+                padding: 0.5rem;
+            }
         }
     </style>
 </head>
@@ -102,8 +142,9 @@
     </header>
 
     <nav>
+        <button class="menu-toggle">☰</button>
         <ul>
-            <li><a href="#home">Home</ a></li>
+            <li><a href="#home">Home</a></li>
             <li><a href="#menu">Menu</a></li>
             <li><a href="#about">About Us</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -150,5 +191,11 @@
     <footer>
         <p>&copy; 2024 Papello. All rights reserved.</p>
     </footer>
+
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('nav').classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
