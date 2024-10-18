@@ -98,10 +98,21 @@
             nav ul {
                 flex-direction: column;
                 align-items: center;
-                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--bg);
+                transform: translateY(-20px);
+                opacity: 0;
+                visibility: hidden;
+                transition: transform 0.3s ease-out, opacity 0.3s ease-out, visibility 0s 0.3s;
             }
             nav.active ul {
-                display: flex;
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+                transition: transform 0.3s ease-out, opacity 0.3s ease-out;
             }
             nav li {
                 margin: 10px 0;
@@ -131,6 +142,18 @@
             }
             .container {
                 padding: 0.5rem;
+            }
+        }
+
+        /* Hide menu toggle on desktop */
+        @media (min-width: 769px) {
+            .menu-toggle {
+                display: none;
+            }
+            nav ul {
+                transform: none !important;
+                opacity: 1 !important;
+                visibility: visible !important;
             }
         }
     </style>
